@@ -76,6 +76,7 @@
             font-size: 1.1rem;
             letter-spacing: -0.02em;
             color: var(--text);
+            flex-shrink: 0;
         }
 
         .nav-logo span {
@@ -84,7 +85,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
@@ -96,9 +97,77 @@
             color: var(--muted);
             text-decoration: none;
             transition: color 0.2s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+            z-index: 200;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all 0.3s;
+            transform-origin: center;
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 15, 0.97);
+            z-index: 150;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover {
             color: var(--text);
         }
 
@@ -179,12 +248,13 @@
             width: 32px;
             height: 1px;
             background: var(--accent2);
+            flex-shrink: 0;
         }
 
         .hero-name {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-size: clamp(3rem, 10vw, 7rem);
             line-height: 0.95;
             letter-spacing: -0.04em;
             margin-bottom: 1.5rem;
@@ -199,7 +269,7 @@
         }
 
         .hero-desc {
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
             color: var(--muted);
             line-height: 1.7;
             max-width: 520px;
@@ -349,7 +419,7 @@
         .section-title {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
             letter-spacing: -0.03em;
             margin-bottom: 3rem;
             line-height: 1.1;
@@ -358,7 +428,7 @@
         /* === SKILLS === */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 1rem;
         }
 
@@ -409,7 +479,7 @@
 
         .skill-name {
             font-family: 'DM Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text);
             position: relative;
             z-index: 1;
@@ -460,7 +530,7 @@
         .timeline-company {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             margin-bottom: 0.3rem;
         }
 
@@ -482,7 +552,7 @@
         /* === PROJECTS === */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -534,7 +604,7 @@
         .project-name {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.3;
         }
 
@@ -618,12 +688,14 @@
             color: var(--accent2);
             min-width: 60px;
             letter-spacing: 0.05em;
+            flex-shrink: 0;
         }
 
         .cert-name {
             font-size: 0.9rem;
             color: var(--text);
             flex: 1;
+            line-height: 1.5;
         }
 
         .cert-link {
@@ -765,37 +837,6 @@
             background: var(--border);
         }
 
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .hero {
-                padding: 7rem 1.5rem 4rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-                padding: 1.5rem;
-            }
-        }
-
         /* === ANIMATED GRID BG === */
         .grid-bg {
             position: fixed;
@@ -806,6 +847,210 @@
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* =============================================
+           RESPONSIVE BREAKPOINTS
+        ============================================= */
+
+        /* Tablet — 1024px */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+
+            .hero {
+                padding: 8rem 2rem 4rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+
+            footer {
+                padding: 2rem;
+            }
+        }
+
+        /* Tablet — hide nav links, show hamburger at 860px */
+        @media (max-width: 860px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 7rem 2rem 5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        /* Mobile — 640px */
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .hero {
+                padding: 6.5rem 1.25rem 4.5rem;
+                min-height: 100dvh;
+            }
+
+            .hero-name {
+                font-size: clamp(2.6rem, 13vw, 3.5rem);
+            }
+
+            .hero-label {
+                font-size: 0.65rem;
+            }
+
+            .hero-desc {
+                font-size: 0.92rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+                font-size: 0.78rem;
+            }
+
+            .hero-scroll {
+                display: none;
+            }
+
+            section {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .skill-card {
+                padding: 1rem;
+                gap: 0.6rem;
+            }
+
+            .skill-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.95rem;
+            }
+
+            .skill-name {
+                font-size: 0.72rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-dot {
+                left: -1.9rem;
+            }
+
+            .timeline-item {
+                padding-left: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-company {
+                font-size: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-card {
+                padding: 1.25rem;
+            }
+
+            .project-arrow {
+                opacity: 1;
+                width: 28px;
+                height: 28px;
+            }
+
+            .cert-item {
+                gap: 1rem;
+                padding: 1rem 1.1rem;
+                flex-wrap: wrap;
+            }
+
+            .cert-year {
+                min-width: auto;
+            }
+
+            .cert-badge {
+                display: none;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text {
+                font-size: 0.92rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tiny Mobile — 380px */
+        @media (max-width: 380px) {
+            .hero-name {
+                font-size: clamp(2.2rem, 14vw, 3rem);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .btn {
+                font-size: 0.72rem;
+            }
         }
     </style>
 </head>
@@ -826,7 +1071,23 @@
             <li><a href="#certs">Sertifikalar</a></li>
             <li><a href="#contact">İletişim</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero" class="mobile-nav-link">Hakkında</a>
+        <a href="#skills" class="mobile-nav-link">Beceriler</a>
+        <a href="#experience" class="mobile-nav-link">Deneyim</a>
+        <a href="#projects" class="mobile-nav-link">Projeler</a>
+        <a href="#education" class="mobile-nav-link">Eğitim</a>
+        <a href="#certs" class="mobile-nav-link">Sertifikalar</a>
+        <a href="#contact" class="mobile-nav-link">İletişim</a>
+    </div>
 
     <!-- HERO -->
     <div class="hero" id="hero">
@@ -840,8 +1101,7 @@
             </h1>
             <p class="hero-desc">
                 Backend ve Web Geliştirme alanlarında deneyim sahibi. .NET, Python ve modern yazılım mimarisi ile
-                yenilikçi
-                çözümler üretiyorum.
+                yenilikçi çözümler üretiyorum.
             </p>
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">Projelerimi Gör →</a>
@@ -923,8 +1183,7 @@
                 <p class="timeline-role">Yazılım Stajyeri</p>
                 <p class="timeline-desc">
                     .NET, PostgreSQL, Docker, Kafka ve RabbitMQ teknolojileriyle kapsamlı pratik çalışmalar yaptım. API
-                    akışları,
-                    veritabanı işlemleri, loglama ve kurumsal yazılım mimarisinde deneyim kazandım.
+                    akışları, veritabanı işlemleri, loglama ve kurumsal yazılım mimarisinde deneyim kazandım.
                 </p>
             </div>
             <div class="timeline-item">
@@ -934,8 +1193,7 @@
                 <p class="timeline-role">IT Stajyeri</p>
                 <p class="timeline-desc">
                     Internet altyapısı kurulumu (Access Point, Router, Modem), yazıcı kurulumu ve teknik destek
-                    hizmetleri
-                    sağladım.
+                    hizmetleri sağladım.
                 </p>
             </div>
         </div>
@@ -955,8 +1213,7 @@
                 <h3 class="project-name">LLM Ajanlı Yazılım Geliştirme Platformu</h3>
                 <p class="project-desc">
                     Lisans bitirme tezi. GPT-4 ajanlarını kullanarak C#, Python ve Java dillerinde otomatik birim testi
-                    üretimi,
-                    kod yorumlama ve arayüz testi senaryoları sunan mikroservis tabanlı platform.
+                    üretimi, kod yorumlama ve arayüz testi senaryoları sunan mikroservis tabanlı platform.
                 </p>
                 <div class="project-tags">
                     <span class="tag">.NET 8</span>
@@ -973,8 +1230,7 @@
                 <h3 class="project-name">Tiny House Rezervasyon ve Yönetim Sistemi</h3>
                 <p class="project-desc">
                     Kullanıcıların ev arayıp rezervasyon yapabildiği web uygulaması. Kiralama ve ödeme akışı, giriş/rol
-                    yönetimi
-                    ve temel güvenlik kontrolleri içeriyor.
+                    yönetimi ve temel güvenlik kontrolleri içeriyor.
                 </p>
                 <div class="project-tags">
                     <span class="tag">.NET 8</span>
@@ -989,8 +1245,7 @@
                 <h3 class="project-name">Kelime Ezberleme Oyunu</h3>
                 <p class="project-desc">
                     Aralıklı tekrar mantığıyla çalışan mini quiz motoru. Kullanıcıların çalışma ilerlemesini kaydeden
-                    panel ve
-                    sade arayüz tasarımı içeriyor.
+                    panel ve sade arayüz tasarımı içeriyor.
                 </p>
                 <div class="project-tags">
                     <span class="tag">C#</span>
@@ -1006,8 +1261,7 @@
                 <h3 class="project-name">Blog Sayfası</h3>
                 <p class="project-desc">
                     Üniversite dersi kapsamında geliştirilen, içerik yönetimi özelliklerine sahip tam yığın blog
-                    uygulaması. HTML,
-                    CSS ve veritabanı entegrasyonu ile dinamik sayfa yapısı sunar.
+                    uygulaması. HTML, CSS ve veritabanı entegrasyonu ile dinamik sayfa yapısı sunar.
                 </p>
                 <div class="project-tags">
                     <span class="tag">HTML</span>
@@ -1035,8 +1289,7 @@
             <div class="cert-item">
                 <span class="cert-year">2015–19</span>
                 <span class="cert-name">Bahçelievler Türk Telekom Mesleki ve Teknik Anadolu Lisesi — Bilişim
-                    Teknolojileri /
-                    Veritabanı Programcılığı</span>
+                    Teknolojileri / Veritabanı Programcılığı</span>
                 <div class="cert-badge"></div>
             </div>
         </div>
@@ -1084,8 +1337,7 @@
                 <p class="about-text">
                     Backend ve Web Geliştirme alanlarında bilgi ve deneyim kazanarak, <strong>yenilikçi projelerde yer
                         almayı</strong> ve kaliteli çözümler sunmayı hedefliyorum. Yeni fırsatlar ve iş birlikleri için
-                    iletişime
-                    geçmekten çekinmeyin.
+                    iletişime geçmekten çekinmeyin.
                 </p>
             </div>
             <div class="contact-links">
@@ -1117,13 +1369,47 @@
 
     <footer>
         <p>© 2025 Muhammet Aydın — Yazılım Mühendisi</p>
-        <p>Beylikdüzü / İstanbul</p>
+        <p>İstanbul</p>
     </footer>
 
     <script>
+        // Hamburger toggle
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
         // Smooth reveal on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'transl
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .cert-item, .contact-link').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>
