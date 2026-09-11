@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Muhammet Aydın">
+    <defs>
+        <linearGradient id="accent" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6e56ff" />
+            <stop offset="1" stop-color="#00d4aa" />
+        </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="14" fill="#13131a" />
+    <rect x="3" y="3" width="58" height="58" rx="11" fill="none" stroke="url(#accent)" stroke-width="3" />
+    <text x="31" y="41" fill="#e8e8f0" font-family="Arial, sans-serif" font-size="25" font-weight="700"
+        text-anchor="middle">MA</text>
+    <circle cx="53" cy="43" r="3" fill="#6e56ff" />
+</svg>

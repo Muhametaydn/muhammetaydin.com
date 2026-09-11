@@ -5,6 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammet Aydın — Yazılım Mühendisi</title>
+    <meta id="metaDescription" name="description"
+        content="Muhammet Aydın'ın .NET, Clean Architecture, backend geliştirme ve yapay zekâ destekli yazılım projelerini içeren portfolyosu.">
+    <meta name="author" content="Muhammet Aydın">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://muhammetaydin.com/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://muhammetaydin.com/">
+    <meta id="ogTitle" property="og:title" content="Muhammet Aydın — Yazılım Mühendisi">
+    <meta id="ogDescription" property="og:description"
+        content=".NET, Clean Architecture, backend geliştirme ve yapay zekâ destekli yazılım projeleri.">
+    <meta property="og:site_name" content="Muhammet Aydın">
+    <meta id="ogLocale" property="og:locale" content="tr_TR">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <meta name="twitter:card" content="summary">
+    <meta id="twitterTitle" name="twitter:title" content="Muhammet Aydın — Yazılım Mühendisi">
+    <meta id="twitterDescription" name="twitter:description"
+        content=".NET, Clean Architecture, backend geliştirme ve yapay zekâ destekli yazılım projeleri.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap"
@@ -60,7 +80,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
+            z-index: 200;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -102,6 +122,44 @@
 
         .nav-links a:hover {
             color: var(--text);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            padding: 0.2rem;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--surface);
+        }
+
+        .lang-button {
+            min-width: 34px;
+            padding: 0.38rem 0.5rem;
+            border: 0;
+            border-radius: 5px;
+            background: transparent;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .lang-button:hover {
+            color: var(--text);
+        }
+
+        .lang-button.active {
+            color: var(--text);
+            background: var(--accent);
         }
 
         /* Hamburger */
@@ -485,6 +543,27 @@
             z-index: 1;
         }
 
+        .skill-icon img,
+        .contact-link-icon img {
+            width: 22px;
+            height: 22px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .skill-icon.icon-stack {
+            gap: 1px;
+        }
+
+        .skill-icon.icon-stack img {
+            width: 10px;
+            height: 10px;
+        }
+
+        .icon-monochrome {
+            filter: brightness(0) invert(1);
+        }
+
         /* === EXPERIENCE === */
         .timeline {
             position: relative;
@@ -547,6 +626,18 @@
             font-size: 0.9rem;
             line-height: 1.7;
             max-width: 600px;
+        }
+
+        .timeline-highlights {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            max-width: 760px;
+            padding-left: 1.1rem;
+        }
+
+        .timeline-highlights li + li {
+            margin-top: 0.55rem;
         }
 
         /* === PROJECTS === */
@@ -890,6 +981,10 @@
                 display: flex;
             }
 
+            .nav-actions {
+                gap: 0.65rem;
+            }
+
             .hero {
                 padding: 7rem 2rem 5rem;
             }
@@ -1063,30 +1158,36 @@
     <nav>
         <div class="nav-logo">MA<span>.</span></div>
         <ul class="nav-links">
-            <li><a href="#hero">Hakkında</a></li>
-            <li><a href="#skills">Beceriler</a></li>
-            <li><a href="#experience">Deneyim</a></li>
-            <li><a href="#projects">Projeler</a></li>
-            <li><a href="#education">Eğitim</a></li>
-            <li><a href="#certs">Sertifikalar</a></li>
-            <li><a href="#contact">İletişim</a></li>
+            <li><a href="#hero" data-i18n="nav.about">Hakkında</a></li>
+            <li><a href="#skills" data-i18n="nav.skills">Beceriler</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">Deneyim</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projeler</a></li>
+            <li><a href="#education" data-i18n="nav.education">Eğitim</a></li>
+            <li><a href="#certs" data-i18n="nav.certificates">Sertifikalar</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
         </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-actions">
+            <div class="lang-switch" role="group" aria-label="Dil seçimi">
+                <button type="button" class="lang-button active" data-lang="tr" aria-pressed="true">TR</button>
+                <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#hero" class="mobile-nav-link">Hakkında</a>
-        <a href="#skills" class="mobile-nav-link">Beceriler</a>
-        <a href="#experience" class="mobile-nav-link">Deneyim</a>
-        <a href="#projects" class="mobile-nav-link">Projeler</a>
-        <a href="#education" class="mobile-nav-link">Eğitim</a>
-        <a href="#certs" class="mobile-nav-link">Sertifikalar</a>
-        <a href="#contact" class="mobile-nav-link">İletişim</a>
+        <a href="#hero" class="mobile-nav-link" data-i18n="nav.about">Hakkında</a>
+        <a href="#skills" class="mobile-nav-link" data-i18n="nav.skills">Beceriler</a>
+        <a href="#experience" class="mobile-nav-link" data-i18n="nav.experience">Deneyim</a>
+        <a href="#projects" class="mobile-nav-link" data-i18n="nav.projects">Projeler</a>
+        <a href="#education" class="mobile-nav-link" data-i18n="nav.education">Eğitim</a>
+        <a href="#certs" class="mobile-nav-link" data-i18n="nav.certificates">Sertifikalar</a>
+        <a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">İletişim</a>
     </div>
 
     <!-- HERO -->
@@ -1094,23 +1195,25 @@
         <div class="hero-glow"></div>
         <div class="hero-glow2"></div>
         <div class="hero-content">
-            <p class="hero-label">Yazılım Mühendisi — İstanbul</p>
+            <p class="hero-label" data-i18n="hero.label">Junior Yazılım Mühendisi — İstanbul</p>
             <h1 class="hero-name">
                 Muhammet
                 <span class="line2">Aydın</span>
             </h1>
-            <p class="hero-desc">
-                Backend ve Web Geliştirme alanlarında deneyim sahibi. .NET, Python ve modern yazılım mimarisi ile
-                yenilikçi çözümler üretiyorum.
+            <p class="hero-desc" data-i18n="hero.description">
+                Backend ve web geliştirme alanlarında uygulamalı deneyime sahip Junior Yazılım Mühendisiyim. Modern
+                yazılım mimarileri ve yapay zekâ entegreli uygulamalara odaklanıyorum; .NET, REST API'ler,
+                veritabanları, konteynerleştirme, mesajlaşma sistemleri ve LLM tabanlı geliştirme alanlarında
+                çalışıyorum.
             </p>
             <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">Projelerimi Gör →</a>
+                <a href="#projects" class="btn btn-primary" data-i18n="hero.projectsButton">Projelerimi Gör →</a>
                 <a href="https://github.com/Muhametaydn" target="_blank" class="btn btn-ghost">GitHub ↗</a>
             </div>
         </div>
         <div class="hero-scroll">
             <div class="scroll-line"></div>
-            Scroll
+            <span data-i18n="hero.scroll">Kaydır</span>
         </div>
     </div>
 
@@ -1118,44 +1221,102 @@
 
     <!-- SKILLS -->
     <section id="skills">
-        <p class="section-label">01 — Yetenekler</p>
-        <h2 class="section-title">Teknoloji Yığını</h2>
+        <p class="section-label" data-i18n="skills.label">01 — Yetenekler</p>
+        <h2 class="section-title" data-i18n="skills.title">Teknoloji Yığını</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-icon">⚡</div><span class="skill-name">ASP.NET Core MVC</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" aria-hidden="true"></div><span class="skill-name">ASP.NET Core MVC</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🔷</div><span class="skill-name">C#</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" aria-hidden="true"></div><span class="skill-name">ASP.NET Core Web API</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🐍</div><span class="skill-name">Python</span>
+                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="" aria-hidden="true"></div><span class="skill-name">C#</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">☕</div><span class="skill-name">Java</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" aria-hidden="true"></div><span class="skill-name">Entity Framework Core</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🗄️</div><span class="skill-name">SQL / PostgreSQL</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/jsonwebtokens/E8E8F0" alt="" aria-hidden="true"></div><span class="skill-name">REST API / JWT Auth</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🐳</div><span class="skill-name">Docker</span>
+                <div class="skill-icon">🏛️</div><span class="skill-name">Clean Architecture / DDD</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">📨</div><span class="skill-name">Kafka</span>
+                <div class="skill-icon">↔️</div><span class="skill-name">CQRS / MediatR</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🐇</div><span class="skill-name">RabbitMQ</span>
+                <div class="skill-icon">🧩</div><span class="skill-name">SOLID</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🌐</div><span class="skill-name">HTML / CSS / JS</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/python" alt="" aria-hidden="true"></div><span class="skill-name">Python</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">⚛️</div><span class="skill-name">Next.js</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/openjdk/E76F00" alt="" aria-hidden="true"></div><span class="skill-name">Java</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🤖</div><span class="skill-name">OpenAI / LLM</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/postgresql" alt="" aria-hidden="true"></div><span class="skill-name">SQL / PostgreSQL</span>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🔀</div><span class="skill-name">FastAPI</span>
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/docker" alt="" aria-hidden="true"></div><span class="skill-name">Docker</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/apachekafka/E8E8F0" alt="" aria-hidden="true"></div><span class="skill-name">Kafka</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/rabbitmq" alt="" aria-hidden="true"></div><span class="skill-name">RabbitMQ</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/githubactions" alt="" aria-hidden="true"></div><span class="skill-name">GitHub Actions / CI/CD</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/swagger" alt="" aria-hidden="true"></div><span class="skill-name">Swagger / OpenAPI</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/grafana" alt="" aria-hidden="true"></div><span class="skill-name">Grafana</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧪</div><span class="skill-name">Unit Testing</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔄</div><span class="skill-name">Agile / Scrum</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon icon-stack">
+                    <img src="https://cdn.simpleicons.org/html5" alt="" aria-hidden="true">
+                    <img src="https://cdn.simpleicons.org/css" alt="" aria-hidden="true">
+                    <img src="https://cdn.simpleicons.org/javascript" alt="" aria-hidden="true">
+                </div><span class="skill-name">HTML / CSS / JS</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/nextdotjs/E8E8F0" alt="" aria-hidden="true"></div><span class="skill-name">Next.js</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/fastapi" alt="" aria-hidden="true"></div><span class="skill-name">FastAPI</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img class="icon-monochrome" src="https://raw.githubusercontent.com/simple-icons/simple-icons/14.15.0/icons/openai.svg" alt="" aria-hidden="true"></div><span class="skill-name">ChatGPT</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><img src="https://cdn.simpleicons.org/anthropic/D4A574" alt="" aria-hidden="true"></div><span class="skill-name">Claude</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔎</div><span class="skill-name" data-i18n="skills.codeAnalysis">Kod Analizi</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🐞</div><span class="skill-name">Debugging</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🛠️</div><span class="skill-name">Refactoring</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧬</div><span class="skill-name" data-i18n="skills.testGeneration">Test Üretimi</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📝</div><span class="skill-name" data-i18n="skills.documentation">Dokümantasyon</span>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔬</div><span class="skill-name" data-i18n="skills.technicalResearch">Teknik Araştırma</span>
             </div>
         </div>
     </section>
@@ -1164,36 +1325,51 @@
 
     <!-- EXPERIENCE -->
     <section id="experience">
-        <p class="section-label">02 — Deneyim</p>
-        <h2 class="section-title">İş Deneyimi</h2>
+        <p class="section-label" data-i18n="experience.label">02 — Deneyim</p>
+        <h2 class="section-title" data-i18n="experience.title">İş Deneyimi</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <p class="timeline-year">2025 - 2026</p>
-                <h3 class="timeline-company">Manisa Celal Bayar Üniversitesi İşkur Gençlik Programı</h3>
-                <p class="timeline-role">Yazılım Mühendisliği Staj Komisyonu</p>
-                <p class="timeline-desc">
-                    İŞKUR Gençlik Programı kapsamında Yazılım Mühendisliği Bölümü Staj Komisyonunda görev aldım.
-                </p>
+                <p class="timeline-year" data-i18n="experience.commission.date">Kasım 2025 — Şubat 2026</p>
+                <h3 class="timeline-company" data-i18n="experience.commission.company">Manisa Celal Bayar
+                    Üniversitesi İŞKUR Gençlik Programı</h3>
+                <p class="timeline-role" data-i18n="experience.commission.role">Staj Komisyonu Görevlisi</p>
+                <ul class="timeline-highlights">
+                    <li data-i18n="experience.commission.item1">İŞKUR Gençlik Programı kapsamında Yazılım Mühendisliği
+                        Bölümü Staj Komisyonu'nda görev aldım.</li>
+                    <li data-i18n="experience.commission.item2">Staj defterlerini inceleyerek raporlar hazırladım ve
+                        öğrencilerin staj yaptığı şehir ve ülkelere ilişkin temel analizler gerçekleştirdim.</li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <p class="timeline-year">2025</p>
+                <p class="timeline-year" data-i18n="experience.softtech.date">Temmuz 2025 — Eylül 2025</p>
                 <h3 class="timeline-company">Softtech A.Ş.</h3>
-                <p class="timeline-role">Yazılım Stajyeri</p>
-                <p class="timeline-desc">
-                    .NET, PostgreSQL, Docker, Kafka ve RabbitMQ teknolojileriyle kapsamlı pratik çalışmalar yaptım. API
-                    akışları, veritabanı işlemleri, loglama ve kurumsal yazılım mimarisinde deneyim kazandım.
-                </p>
+                <p class="timeline-role" data-i18n="experience.softtech.role">Yazılım Mühendisliği Stajyeri</p>
+                <ul class="timeline-highlights">
+                    <li data-i18n="experience.softtech.item1">Müşteri ve POS terminali yönetimi için C# WinForms
+                        uygulaması geliştirerek CRUD işlemleri,
+                        veri doğrulama ve SQL Stored Procedure tabanlı veritabanı operasyonları gerçekleştirdim.</li>
+                    <li data-i18n="experience.softtech.item2">Quartz.NET ile harici API’den User ve Todo verilerini
+                        alan zamanlanmış bir Kafka
+                        producer-consumer akışı geliştirdim; kayıtları insert/update işlemleriyle senkronize edip
+                        süreci logladım.</li>
+                    <li data-i18n="experience.softtech.item3">RabbitMQ üzerinden mesaj yayımlayan ve tüketen iki
+                        uygulamalı bir producer-consumer akışı
+                        geliştirdim.</li>
+                    <li data-i18n="experience.softtech.item4">Docker, Kafka ve RabbitMQ kurulumlarıyla uygulamalı
+                        çalışmalar yaptım; Grafana ile temel
+                        izleme süreçlerini ve yaygın yazılım tasarım desenlerini inceledim.</li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <p class="timeline-year">2018 — 2019</p>
+                <p class="timeline-year" data-i18n="experience.eofis.date">Eylül 2018 — Haziran 2019</p>
                 <h3 class="timeline-company">e-Ofis İstanbul</h3>
-                <p class="timeline-role">IT Stajyeri</p>
-                <p class="timeline-desc">
-                    Internet altyapısı kurulumu (Access Point, Router, Modem), yazıcı kurulumu ve teknik destek
-                    hizmetleri sağladım.
+                <p class="timeline-role" data-i18n="experience.eofis.role">BT Stajyeri</p>
+                <p class="timeline-desc" data-i18n="experience.eofis.description">
+                    Müşteri ve çalışanlara teknik destek sağladım; farklı lokasyonlarda ağ altyapısı ve yazıcı
+                    kurulumlarını gerçekleştirdim.
                 </p>
             </div>
         </div>
@@ -1203,15 +1379,53 @@
 
     <!-- PROJECTS -->
     <section id="projects">
-        <p class="section-label">03 — Projeler</p>
-        <h2 class="section-title">Öne Çıkan İşler</h2>
+        <p class="section-label" data-i18n="projects.label">03 — Projeler</p>
+        <h2 class="section-title" data-i18n="projects.title">Öne Çıkan İşler</h2>
         <div class="projects-grid">
+
+            <a href="https://github.com/Muhametaydn/ECommerceAPI-CleanArchitecture" target="_blank"
+                rel="noopener noreferrer" class="project-card">
+                <div class="project-arrow">↗</div>
+                <p class="project-num">001</p>
+                <h3 class="project-name" data-i18n="projects.ecommerce.name">E-Ticaret Backend API</h3>
+                <p class="project-desc" data-i18n="projects.ecommerce.description">
+                    Clean Architecture, DDD ve CQRS yaklaşımıyla geliştirilen production-style e-ticaret REST API.
+                    JWT refresh token rotation, policy tabanlı yetkilendirme, RabbitMQ ve Outbox Pattern ile güvenilir
+                    mesajlaşma; Redis, ETag ve Elasticsearch ile performans odaklı altyapı sunuyor.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">.NET 8</span>
+                    <span class="tag">Clean Architecture</span>
+                    <span class="tag green">PostgreSQL</span>
+                    <span class="tag">RabbitMQ</span>
+                    <span class="tag">Docker / CI/CD</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/Muhametaydn/BankingReconciliation" target="_blank"
+                rel="noopener noreferrer" class="project-card">
+                <div class="project-arrow">↗</div>
+                <p class="project-num">002</p>
+                <h3 class="project-name" data-i18n="projects.banking.name">Bankacılık Mutabakat Sistemi</h3>
+                <p class="project-desc" data-i18n="projects.banking.description">
+                    Şube ve banka işlem kayıtlarını CSV, TXT veya veritabanı kaynaklarından karşılaştıran web
+                    uygulaması. Eksik, mükerrer ve tutar farklarını tespit ediyor; Excel raporlama, rol tabanlı
+                    onay-red akışı, işlem geçmişi ve denetim kaydı sağlıyor.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">.NET 8</span>
+                    <span class="tag">Minimal API</span>
+                    <span class="tag green">PostgreSQL</span>
+                    <span class="tag">xUnit</span>
+                    <span class="tag">Docker / Kubernetes</span>
+                </div>
+            </a>
 
             <a href="https://github.com/Muhametaydn/LLMDevPlatform" target="_blank" class="project-card">
                 <div class="project-arrow">↗</div>
-                <p class="project-num">001</p>
-                <h3 class="project-name">LLM Ajanlı Yazılım Geliştirme Platformu</h3>
-                <p class="project-desc">
+                <p class="project-num">003</p>
+                <h3 class="project-name" data-i18n="projects.llm.name">LLM Ajanlı Yazılım Geliştirme Platformu</h3>
+                <p class="project-desc" data-i18n="projects.llm.description">
                     Lisans bitirme tezi. GPT-4 ajanlarını kullanarak C#, Python ve Java dillerinde otomatik birim testi
                     üretimi, kod yorumlama ve arayüz testi senaryoları sunan mikroservis tabanlı platform.
                 </p>
@@ -1226,9 +1440,10 @@
 
             <a href="https://github.com/Muhametaydn/airbnb" target="_blank" class="project-card">
                 <div class="project-arrow">↗</div>
-                <p class="project-num">002</p>
-                <h3 class="project-name">Tiny House Rezervasyon ve Yönetim Sistemi</h3>
-                <p class="project-desc">
+                <p class="project-num">004</p>
+                <h3 class="project-name" data-i18n="projects.tinyhouse.name">Tiny House Rezervasyon ve Yönetim
+                    Sistemi</h3>
+                <p class="project-desc" data-i18n="projects.tinyhouse.description">
                     Kullanıcıların ev arayıp rezervasyon yapabildiği web uygulaması. Kiralama ve ödeme akışı, giriş/rol
                     yönetimi ve temel güvenlik kontrolleri içeriyor.
                 </p>
@@ -1241,9 +1456,9 @@
 
             <a href="https://github.com/Muhametaydn/WordMemory6Repeat" target="_blank" class="project-card">
                 <div class="project-arrow">↗</div>
-                <p class="project-num">003</p>
-                <h3 class="project-name">Kelime Ezberleme Oyunu</h3>
-                <p class="project-desc">
+                <p class="project-num">005</p>
+                <h3 class="project-name" data-i18n="projects.words.name">Kelime Ezberleme Oyunu</h3>
+                <p class="project-desc" data-i18n="projects.words.description">
                     Aralıklı tekrar mantığıyla çalışan mini quiz motoru. Kullanıcıların çalışma ilerlemesini kaydeden
                     panel ve sade arayüz tasarımı içeriyor.
                 </p>
@@ -1257,9 +1472,9 @@
 
             <a href="https://github.com/Muhametaydn/ileriWebVeriTabaniSoa" target="_blank" class="project-card">
                 <div class="project-arrow">↗</div>
-                <p class="project-num">004</p>
-                <h3 class="project-name">Blog Sayfası</h3>
-                <p class="project-desc">
+                <p class="project-num">006</p>
+                <h3 class="project-name" data-i18n="projects.blog.name">Blog Sayfası</h3>
+                <p class="project-desc" data-i18n="projects.blog.description">
                     Üniversite dersi kapsamında geliştirilen, içerik yönetimi özelliklerine sahip tam yığın blog
                     uygulaması. HTML, CSS ve veritabanı entegrasyonu ile dinamik sayfa yapısı sunar.
                 </p>
@@ -1278,17 +1493,19 @@
 
     <!-- EDUCATION -->
     <section id="education">
-        <p class="section-label">04 — Eğitim</p>
-        <h2 class="section-title">Eğitim Hayatı</h2>
+        <p class="section-label" data-i18n="education.label">04 — Eğitim</p>
+        <h2 class="section-title" data-i18n="education.title">Eğitim Hayatı</h2>
         <div class="certs-list">
             <div class="cert-item">
-                <span class="cert-year">2022–26</span>
-                <span class="cert-name">Manisa Celal Bayar Üniversitesi — Yazılım Mühendisliği (Lisans)</span>
+                <span class="cert-year" data-i18n="education.university.date">Eylül 2022 — Haziran 2026</span>
+                <span class="cert-name" data-i18n="education.university.name">Manisa Celal Bayar Üniversitesi —
+                    Yazılım Mühendisliği (Lisans) — Mezun · GNO: 3.07 / 4.00</span>
                 <div class="cert-badge"></div>
             </div>
             <div class="cert-item">
-                <span class="cert-year">2015–19</span>
-                <span class="cert-name">Bahçelievler Türk Telekom Mesleki ve Teknik Anadolu Lisesi — Bilişim
+                <span class="cert-year" data-i18n="education.highschool.date">Eylül 2015 — Haziran 2019</span>
+                <span class="cert-name" data-i18n="education.highschool.name">Bahçelievler Türk Telekom Mesleki ve
+                    Teknik Anadolu Lisesi — Bilişim
                     Teknolojileri / Veritabanı Programcılığı</span>
                 <div class="cert-badge"></div>
             </div>
@@ -1299,12 +1516,23 @@
 
     <!-- CERTS -->
     <section id="certs">
-        <p class="section-label">05 — Sertifikalar</p>
-        <h2 class="section-title">Sertifikalar</h2>
+        <p class="section-label" data-i18n="certificates.label">05 — Sertifikalar</p>
+        <h2 class="section-title" data-i18n="certificates.title">Sertifikalar</h2>
         <div class="certs-list">
             <div class="cert-item">
+                <span class="cert-year">2026</span>
+                <span class="cert-name" data-i18n="certificates.advancedCsharp">Pupilica — İleri Seviye C# Eğitimi</span>
+                <div class="cert-badge cert-badge-gold"></div>
+            </div>
+            <div class="cert-item">
+                <span class="cert-year">2026</span>
+                <span class="cert-name">Pupilica — Artificial Intelligence Bootcamp</span>
+                <div class="cert-badge cert-badge-gold"></div>
+            </div>
+            <div class="cert-item">
                 <span class="cert-year">2024–25</span>
-                <span class="cert-name">Turkcell Geleceği Yazanlar — ASP.NET Core MVC 101/201/301/401</span>
+                <span class="cert-name" data-i18n="certificates.turkcell">Turkcell Geleceği Yazanlar — ASP.NET Core
+                    MVC 101/201/301/401</span>
                 <div class="cert-badge"></div>
             </div>
             <a href="https://www.credly.com/org/ibm-skillsbuild/badge/artificial-intelligence-fundamentals"
@@ -1320,7 +1548,7 @@
             </div>
             <div class="cert-item">
                 <span class="cert-year">2025</span>
-                <span class="cert-name">BTK Akademi — B1 Seviye İngilizce</span>
+                <span class="cert-name" data-i18n="certificates.btk">BTK Akademi — B1 Seviye İngilizce</span>
                 <div class="cert-badge"></div>
             </div>
         </div>
@@ -1330,11 +1558,11 @@
 
     <!-- CONTACT -->
     <section id="contact">
-        <p class="section-label">06 — İletişim</p>
-        <h2 class="section-title">Bana Ulaşın</h2>
+        <p class="section-label" data-i18n="contact.label">06 — İletişim</p>
+        <h2 class="section-title" data-i18n="contact.title">Bana Ulaşın</h2>
         <div class="contact-wrapper">
             <div>
-                <p class="about-text">
+                <p class="about-text" data-i18n="contact.description">
                     Backend ve Web Geliştirme alanlarında bilgi ve deneyim kazanarak, <strong>yenilikçi projelerde yer
                         almayı</strong> ve kaliteli çözümler sunmayı hedefliyorum. Yeni fırsatlar ve iş birlikleri için
                     iletişime geçmekten çekinmeyin.
@@ -1342,14 +1570,18 @@
             </div>
             <div class="contact-links">
                 <a href="mailto:muhametaydn@outlook.com" class="contact-link">
-                    <div class="contact-link-icon">✉️</div>
+                    <div class="contact-link-icon"><img class="icon-monochrome"
+                            src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/envelope-at-fill.svg" alt=""
+                            aria-hidden="true"></div>
                     <div class="contact-link-info">
-                        <p class="contact-link-label">E-Posta</p>
+                        <p class="contact-link-label" data-i18n="contact.email">E-Posta</p>
                     </div>
                     <span class="contact-arrow">→</span>
                 </a>
                 <a href="https://github.com/Muhametaydn" target="_blank" class="contact-link">
-                    <div class="contact-link-icon">🐙</div>
+                    <div class="contact-link-icon"><img class="icon-monochrome"
+                            src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/github.svg" alt=""
+                            aria-hidden="true"></div>
                     <div class="contact-link-info">
                         <p class="contact-link-label">GitHub</p>
                     </div>
@@ -1357,9 +1589,20 @@
                 </a>
                 <a href="https://www.linkedin.com/in/muhammet-ayd%C4%B1n-78882125a/" target="_blank"
                     class="contact-link">
-                    <div class="contact-link-icon">💼</div>
+                    <div class="contact-link-icon"><img class="icon-monochrome"
+                            src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/linkedin.svg" alt=""
+                            aria-hidden="true"></div>
                     <div class="contact-link-info">
                         <p class="contact-link-label">LinkedIn</p>
+                    </div>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01496edee12b4c2ade?mp_source=share" target="_blank"
+                    rel="noopener noreferrer" class="contact-link">
+                    <div class="contact-link-icon"><img src="https://cdn.simpleicons.org/upwork/14A800" alt=""
+                            aria-hidden="true"></div>
+                    <div class="contact-link-info">
+                        <p class="contact-link-label">Upwork</p>
                     </div>
                     <span class="contact-arrow">→</span>
                 </a>
@@ -1368,8 +1611,8 @@
     </section>
 
     <footer>
-        <p>© 2025 Muhammet Aydın — Yazılım Mühendisi</p>
-        <p>İstanbul</p>
+        <p data-i18n="footer.copyright">© 2026 Muhammet Aydın — Yazılım Mühendisi</p>
+        <p data-i18n="footer.location">İstanbul</p>
     </footer>
 
     <script>
@@ -1377,10 +1620,160 @@
         const navToggle = document.getElementById('navToggle');
         const mobileMenu = document.getElementById('mobileMenu');
 
+        const pageMetadata = Object.freeze({
+            tr: {
+                title: 'Muhammet Aydın — Yazılım Mühendisi',
+                description: "Muhammet Aydın'ın .NET, Clean Architecture, backend geliştirme ve yapay zekâ destekli yazılım projelerini içeren portfolyosu.",
+                socialDescription: '.NET, Clean Architecture, backend geliştirme ve yapay zekâ destekli yazılım projeleri.',
+                locale: 'tr_TR'
+            },
+            en: {
+                title: 'Muhammet Aydın — Software Engineer',
+                description: "Muhammet Aydın's portfolio featuring .NET, Clean Architecture, backend development, and AI-assisted software projects.",
+                socialDescription: '.NET, Clean Architecture, backend development, and AI-assisted software projects.',
+                locale: 'en_US'
+            }
+        });
+
+        const englishTranslations = Object.freeze({
+            "nav.about": "About",
+            "nav.skills": "Skills",
+            "nav.experience": "Experience",
+            "nav.projects": "Projects",
+            "nav.education": "Education",
+            "nav.certificates": "Certificates",
+            "nav.contact": "Contact",
+            "hero.label": "Junior Software Engineer — Istanbul",
+            "hero.description": "Junior Software Engineer with hands-on experience in backend and web development. I focus on modern software architectures and AI-integrated applications, working with .NET, REST APIs, databases, containerization, messaging systems, and LLM-based development.",
+            "hero.projectsButton": "View My Projects →",
+            "hero.scroll": "Scroll",
+            "skills.label": "01 — Skills",
+            "skills.title": "Technology Stack",
+            "skills.codeAnalysis": "Code Analysis",
+            "skills.testGeneration": "Test Generation",
+            "skills.documentation": "Documentation",
+            "skills.technicalResearch": "Technical Research",
+            "experience.label": "02 — Experience",
+            "experience.title": "Work Experience",
+            "experience.commission.date": "November 2025 — February 2026",
+            "experience.commission.company": "Manisa Celal Bayar University — İŞKUR Youth Program",
+            "experience.commission.role": "Internship Committee Assistant",
+            "experience.commission.item1": "Served on the Software Engineering Department Internship Committee as part of the İŞKUR Youth Program.",
+            "experience.commission.item2": "Reviewed internship journals, prepared reports, and conducted basic analyses of the cities and countries where students completed their internships.",
+            "experience.softtech.date": "July 2025 — September 2025",
+            "experience.softtech.role": "Software Engineering Intern",
+            "experience.softtech.item1": "Developed a C# WinForms application for customer and POS terminal management, implementing CRUD operations, validation, and SQL Stored Procedure-based database operations.",
+            "experience.softtech.item2": "Built a scheduled Kafka producer-consumer flow with Quartz.NET that fetched User and Todo data from an external API, synchronized records through insert/update operations, and logged the process.",
+            "experience.softtech.item3": "Developed a two-application producer-consumer flow that published and consumed messages through RabbitMQ.",
+            "experience.softtech.item4": "Completed hands-on work with Docker, Kafka, and RabbitMQ; used Grafana for basic monitoring and studied common software design patterns.",
+            "experience.eofis.date": "September 2018 — June 2019",
+            "experience.eofis.role": "IT Intern",
+            "experience.eofis.description": "Provided technical support to customers and employees; installed network infrastructure and printers across multiple locations.",
+            "projects.label": "03 — Projects",
+            "projects.title": "Featured Work",
+            "projects.ecommerce.name": "E-Commerce Backend API",
+            "projects.ecommerce.description": "A production-oriented e-commerce REST API built with Clean Architecture, DDD, and CQRS. It combines JWT refresh token rotation and policy-based authorization with reliable messaging through RabbitMQ and the Outbox Pattern, plus Redis, ETag, and Elasticsearch for performance.",
+            "projects.banking.name": "Banking Reconciliation System",
+            "projects.banking.description": "A web application that compares branch and bank transaction records from CSV, TXT, or database sources. It detects missing records, duplicates, and amount differences, and provides Excel reporting, role-based approval/rejection workflows, history, and audit logging.",
+            "projects.llm.name": "LLM Agent-Based Software Development Platform",
+            "projects.llm.description": "Bachelor's graduation project. A microservices-based platform that uses GPT-4 agents to generate automated unit tests for C#, Python, and Java, explain code, and propose UI test scenarios.",
+            "projects.tinyhouse.name": "Tiny House Reservation and Management System",
+            "projects.tinyhouse.description": "A web application where users can search for homes and make reservations. It includes rental and payment flows, authentication, role management, and essential security controls.",
+            "projects.words.name": "Vocabulary Learning Game",
+            "projects.words.description": "A mini quiz engine based on spaced repetition, with a clean interface and a dashboard that records each user's learning progress.",
+            "projects.blog.name": "Blog Platform",
+            "projects.blog.description": "A full-stack blog application with content management features, developed as a university project. It provides dynamic pages through HTML, CSS, JavaScript, and database integration.",
+            "education.label": "04 — Education",
+            "education.title": "Education",
+            "education.university.date": "September 2022 — June 2026",
+            "education.university.name": "Manisa Celal Bayar University — B.Sc. in Software Engineering — Graduate · GPA: 3.07 / 4.00",
+            "education.highschool.date": "September 2015 — June 2019",
+            "education.highschool.name": "Bahçelievler Türk Telekom Vocational and Technical Anatolian High School — Information Technologies / Database Programming",
+            "certificates.label": "05 — Certificates",
+            "certificates.title": "Certificates",
+            "certificates.advancedCsharp": "Pupilica — Advanced C# Training",
+            "certificates.turkcell": "Turkcell Geleceği Yazanlar — ASP.NET Core MVC 101/201/301/401",
+            "certificates.btk": "BTK Academy — B1 Level English",
+            "contact.label": "06 — Contact",
+            "contact.title": "Get in Touch",
+            "contact.description": "I aim to contribute to <strong>innovative projects</strong> and deliver high-quality solutions by continuously expanding my backend and web development experience. Feel free to reach out about new opportunities and collaborations.",
+            "contact.email": "Email",
+            "footer.copyright": "© 2026 Muhammet Aydın — Software Engineer",
+            "footer.location": "Istanbul"
+        });
+
+        const translatableElements = document.querySelectorAll('[data-i18n]');
+        const originalContent = new WeakMap();
+
+        translatableElements.forEach(element => {
+            originalContent.set(element, element.innerHTML.trim());
+        });
+
+        function updateMenuLabel(language) {
+            const isOpen = navToggle.classList.contains('open');
+            const label = language === 'en'
+                ? (isOpen ? 'Close menu' : 'Open menu')
+                : (isOpen ? 'Menüyü Kapat' : 'Menüyü Aç');
+            navToggle.setAttribute('aria-label', label);
+        }
+
+        function applyLanguage(language) {
+            const selectedLanguage = language === 'en' ? 'en' : 'tr';
+
+            translatableElements.forEach(element => {
+                const key = element.dataset.i18n;
+                element.innerHTML = selectedLanguage === 'en' && englishTranslations[key]
+                    ? englishTranslations[key]
+                    : originalContent.get(element);
+            });
+
+            document.documentElement.lang = selectedLanguage;
+            const metadata = pageMetadata[selectedLanguage];
+            document.title = metadata.title;
+            document.getElementById('metaDescription').setAttribute('content', metadata.description);
+            document.getElementById('ogTitle').setAttribute('content', metadata.title);
+            document.getElementById('ogDescription').setAttribute('content', metadata.socialDescription);
+            document.getElementById('ogLocale').setAttribute('content', metadata.locale);
+            document.getElementById('twitterTitle').setAttribute('content', metadata.title);
+            document.getElementById('twitterDescription').setAttribute('content', metadata.socialDescription);
+
+            document.querySelector('.lang-switch').setAttribute(
+                'aria-label',
+                selectedLanguage === 'en' ? 'Language selection' : 'Dil seçimi'
+            );
+
+            document.querySelectorAll('.lang-button').forEach(button => {
+                const isActive = button.dataset.lang === selectedLanguage;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+
+            updateMenuLabel(selectedLanguage);
+
+            try {
+                localStorage.setItem('portfolio-language', selectedLanguage);
+            } catch (error) {
+                // The language switch still works when browser storage is unavailable.
+            }
+        }
+
+        document.querySelectorAll('.lang-button').forEach(button => {
+            button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+        });
+
+        let savedLanguage = 'tr';
+        try {
+            savedLanguage = localStorage.getItem('portfolio-language') || 'tr';
+        } catch (error) {
+            // Turkish remains the default when browser storage is unavailable.
+        }
+        applyLanguage(savedLanguage);
+
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('open');
             mobileMenu.classList.toggle('open');
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            updateMenuLabel(document.documentElement.lang);
         });
 
         // Close mobile menu on link click
@@ -1389,6 +1782,7 @@
                 navToggle.classList.remove('open');
                 mobileMenu.classList.remove('open');
                 document.body.style.overflow = '';
+                updateMenuLabel(document.documentElement.lang);
             });
         });
 
